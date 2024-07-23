@@ -42,8 +42,8 @@
                 <option value="Pee Wee">Pee Wee</option>
             </select>
             
-            <label for="packDate">Pack Date (MM-DD):</label>
-            <input type="text" id="packDate" name="packDate" required>
+            <label for="packDate">Pack Date:</label>
+            <input type="date" id="packDate" name="packDate" required>
             
             <label for="threeDigitFormat">Use 3-digit format for pack date:</label>
             <input type="checkbox" id="threeDigitFormat" name="threeDigitFormat">
@@ -56,6 +56,7 @@
             <button type="button" onclick="exportData()">Export Data</button>
             <input type="file" id="importFile" onchange="importData()" style="display: none;">
             <button type="button" onclick="document.getElementById('importFile').click()">Import Data</button>
+            <button type="button" onclick="clearData()">Clear Data</button>
         </form>
         <div id="labelPreview" class="label-preview"></div>
     </div>

@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     loadSavedData();
 
     // Set default pack date to today
-    const today = new Date();
-    document.getElementById('packDate').value = formatDate(today);
+    const today = new Date().toISOString().slice(0, 10);
+    document.getElementById('packDate').value = today;
 
     // Set default values for expDays, grade, and license prefix if not already set
     if (!localStorage.getItem('labelData')) {
@@ -93,7 +93,7 @@ function generateLabels() {
         </div>
     `;
     
-    document.getElementById('labelPreview').innerHTML = labelHtml +labelHtml;
+    document.getElementById('labelPreview').innerHTML = labelHtml + labelHtml;
 }
 
 function printLabels() {
@@ -125,7 +125,7 @@ function exportData() {
     const data = localStorage.getItem('labelData');
     const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElementdocument.createElement('a');
     a.href = url;
     a.download = 'labelData.json';
     document.body.appendChild(a);
@@ -145,4 +145,9 @@ function importData() {
     };
 
     reader.readAsText(file);
+}
+
+function clearData() {
+    localStorage.removeItem('labelData');
+    loadSavedData();
 }
